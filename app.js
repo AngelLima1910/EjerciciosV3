@@ -49,7 +49,44 @@ var V3 = /** @class */ (function () {
         }
         console.log('El total a pagar a la agencia por todos los estudiantes es de ' + total + ' euros' + '\nEl total a pagar al autobus es de 4000 euros y con ' + numeroEstudiantes + ' estudiantes se debe pagar ' + (4000 / numeroEstudiantes) + ' euros');
     };
+    V3.prototype.ej3 = function () {
+        var dia = 'D';
+        var turno = 'tarde';
+        var minutosExtra = 0;
+        var cobroLlamada = 0;
+        var minutosLlamada = 0;
+        var cobroTotal = 0;
+        var paquete1 = 1;
+        var paquete2 = 0.80;
+        var paquete3 = 0.70;
+        minutosLlamada = Number(prompt('Ingresa la cantidad de minutos que duro tu llamada'));
+        if (minutosLlamada <= 5) {
+            cobroLlamada = paquete1;
+        }
+        if (minutosLlamada >= 6 && minutosLlamada <= 8) {
+            cobroLlamada = paquete1 + paquete2;
+        }
+        if (minutosLlamada >= 9 && minutosLlamada <= 10) {
+            cobroLlamada = paquete1 + paquete2 + paquete3;
+        }
+        if (minutosLlamada > 10) {
+            minutosExtra = minutosLlamada - 10;
+            cobroLlamada = (minutosExtra * 0.50) + (paquete1 + paquete2 + paquete3);
+        }
+        if (dia != 'D') {
+            if (turno != 'tarde') {
+                cobroTotal = cobroLlamada + (cobroLlamada * 0.15);
+            }
+            else {
+                cobroTotal = cobroLlamada + (cobroLlamada * 0.10);
+            }
+        }
+        else {
+            cobroTotal = cobroLlamada + (cobroLlamada * 0.03);
+        }
+        console.log("El cobro total de tu llamada es de ".concat(cobroTotal));
+    };
     return V3;
 }());
 var objeto = new V3();
-// objeto.ej2();
+objeto.ej3();
